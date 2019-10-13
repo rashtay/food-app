@@ -26,7 +26,7 @@ const ImageCard = ({
   <TouchableOpacity onPress={onPress}>
     <View style={[style.container, containerStyle]}>
       <ImageBackground source={{ uri: imgURL }} style={style.imgBackground}>
-        {children}
+        <View style={style.contentContainer}>{children}</View>
       </ImageBackground>
     </View>
   </TouchableOpacity>

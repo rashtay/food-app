@@ -31,25 +31,6 @@ const style = EStylesheet.create({
     paddingVertical: '$gutter',
   },
 
-  categoryItem: {
-    width: '100%',
-    height: 280,
-    marginVertical: '$gutter',
-    borderRadius: '$gutter',
-    overflow: 'hidden',
-  },
-
-  imgBackground: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-  },
-
-  categoryContainer: {
-    padding: '$gutter * 2',
-  },
-
   categoryTagline: {
     color: '$color.color1_70',
     fontFamily: 'SFProDisplay-Regular',

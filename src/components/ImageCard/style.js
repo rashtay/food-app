@@ -22,6 +22,10 @@ const style = EStylesheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
+
+  contentContainer: {
+    padding: '$gutter * 2',
+  },
 });
 
 export default style;

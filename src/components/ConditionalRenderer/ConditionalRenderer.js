@@ -8,7 +8,9 @@
 
 import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
+import AppSafeArea from 'components/AppSafeArea/AppSafeArea';
 import Loader from 'components/Loader/Loader';
+import { toTitleCase } from 'utils/string';
 
 type Props = {
   err?: string,
@@ -21,6 +23,7 @@ type Props = {
 const ConditionalRenderer = (Component: Object) => {
   const ConditionalComp = (props: Props): React$Node => {
     const { err, pending, result, apiCall, navigation } = props;
+    let renderComp = () => <View />;
 
     if (typeof apiCall === 'function') {
       useEffect(apiCall, []);
@@ -28,12 +31,12 @@ const ConditionalRenderer = (Component: Object) => {
 
     // Data loading state
     if (pending) {
-      return <Loader />;
+      renderComp = () => <Loader />;
     }
 
     // Error state
     if (err) {
-      return (
+      renderComp = () => (
         <View>
           <Text>OOPS!</Text>
 
@@ -44,7 +47,7 @@ const ConditionalRenderer = (Component: Object) => {
 
     // Data empty/null state
     if (Array.isArray(result) && !result.length) {
-      return (
+      renderComp = () => (
         <View>
           <Text>The list seems to be empty :(</Text>
         </View>
@@ -54,7 +57,16 @@ const ConditionalRenderer = (Component: Object) => {
     // Handle any other conditions based on project development
 
     // Pass result as a prop to the component
-    return <Component result={result} navigation={navigation} />;
+    renderComp = () => <Component result={result} navigation={navigation} />;
+
+    return <AppSafeArea>{renderComp()}</AppSafeArea>;
+  };
+
+  ConditionalComp.navigationOptions = ({ navigation }: Object) => {
+    return {
+      header: null,
+      headerBackTitle: toTitleCase(navigation.state.routeName.toLowerCase()),
+    };
   };
 
   ConditionalComp.defaultProps = {

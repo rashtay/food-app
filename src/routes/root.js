@@ -36,8 +36,11 @@ const COMMON_NAV_OPTIONS: Object = {
   defaultNavigationOptions: {
     gesturesEnabled: false,
     drawerLockMode: 'locked-closed',
+    headerStyle: {
+      backgroundColor: theme.color3,
+    },
+    headerTintColor: theme.color1,
   },
-  headerMode: 'none',
 };
 
 // Options to configure the tabs

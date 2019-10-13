@@ -33,11 +33,9 @@ const RecipesScreen = (props: Props) => {
         navigation.navigate(CATEGORY_DETAIL, { categoryDetail: item })
       }
       imgURL={item.imgURL}>
-      <View style={style.categoryContainer}>
-        <Text style={style.categoryTagline}>{item.tagline}</Text>
+      <Text style={style.categoryTagline}>{item.tagline}</Text>
 
-        <Text style={style.categoryName}>{item.name}</Text>
-      </View>
+      <Text style={style.categoryName}>{item.name}</Text>
     </ImageCard>
   );
 
