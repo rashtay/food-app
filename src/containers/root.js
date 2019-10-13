@@ -1,0 +1,10 @@
+/**
+ * Author: Rahul Shetty
+ * Date: 10/10/2019
+ *
+ * Export all Screens from a single file
+ * @flow
+ */
+
+export { default as Recipes } from './Recipes';
+export { default as Restaurants } from './Restaurants';
