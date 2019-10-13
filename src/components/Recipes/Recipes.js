@@ -7,33 +7,48 @@
  */
 
 import React from 'react';
-import { View, Text, FlatList, ImageBackground } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 import ConditionalRenderer from 'components/ConditionalRenderer/ConditionalRenderer';
 import AppSafeArea from 'components/AppSafeArea/AppSafeArea';
 import Search from 'components/Search/Search';
+import routes from 'routes/routes';
 import style from './style';
 
 type Props = {
   result: Categories,
+  navigation: Object,
 };
 
+const { CATEGORY_DETAIL } = routes;
+
 const RecipesScreen = (props: Props) => {
-  const { result } = props;
+  const { result, navigation } = props;
 
   const keyExtractor = (item: Object) => `${item.id}`;
 
   const renderCategory = ({ item }) => (
-    <View key={item.id} style={style.categoryItem}>
-      <ImageBackground
-        source={{ uri: item.imgURL }}
-        style={style.imgBackground}>
-        <View style={style.categoryContainer}>
-          <Text style={style.categoryTagline}>{item.tagline}</Text>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate(CATEGORY_DETAIL, { categoryDetail: { ...item } })
+      }>
+      <View key={item.id} style={style.categoryItem}>
+        <ImageBackground
+          source={{ uri: item.imgURL }}
+          style={style.imgBackground}>
+          <View style={style.categoryContainer}>
+            <Text style={style.categoryTagline}>{item.tagline}</Text>
 
-          <Text style={style.categoryName}>{item.name}</Text>
-        </View>
-      </ImageBackground>
-    </View>
+            <Text style={style.categoryName}>{item.name}</Text>
+          </View>
+        </ImageBackground>
+      </View>
+    </TouchableOpacity>
   );
 
   return (

@@ -7,4 +7,6 @@
  */
 
 export { default as Recipes } from './Recipes';
+export { default as CategoryDetail } from './CategoryDetail';
+
 export { default as Restaurants } from './Restaurants';

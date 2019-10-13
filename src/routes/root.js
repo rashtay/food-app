@@ -11,7 +11,7 @@ import { Image, StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Recipes, Restaurants } from 'containers/root';
+import { Recipes, Restaurants, CategoryDetail } from 'containers/root';
 import { theme } from 'styles/root';
 import FeedIcon from 'assets/icons/feed/icons-feed.png';
 import RestaurantIcon from 'assets/icons/restaurant/icons-restaurant.png';
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 });
 
 // Route names for the screens
-const { RECIPES, RESTAURANTS } = routes;
+const { RECIPES, RESTAURANTS, CATEGORY_DETAIL } = routes;
 
 // Images paths for the tab icons
 const IMAGE_PATH: Object = {
@@ -53,7 +53,10 @@ const StackNav = (screens: Screens): Object =>
   createStackNavigator(screens, COMMON_NAV_OPTIONS);
 
 // Screens for Recipes
-const RecipeStack = StackNav({ [RECIPES]: Recipes });
+const RecipeStack = StackNav({
+  [RECIPES]: Recipes,
+  [CATEGORY_DETAIL]: CategoryDetail,
+});
 
 // Screens for Restaurants
 const RestaurantStack = StackNav({ [RESTAURANTS]: Restaurants });

@@ -10,11 +10,21 @@ import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import Loader from 'components/Loader/Loader';
 
-const ConditionalRenderer = (Component: Object) => {
-  return (props: Object): React$Node => {
-    const { err, pending, result, apiCall } = props;
+type Props = {
+  err?: string,
+  pending?: boolean,
+  result?: any,
+  apiCall?: Function,
+  navigation: Object,
+};
 
-    useEffect(apiCall, []);
+const ConditionalRenderer = (Component: Object) => {
+  const ConditionalComp = (props: Props): React$Node => {
+    const { err, pending, result, apiCall, navigation } = props;
+
+    if (typeof apiCall === 'function') {
+      useEffect(apiCall, []);
+    }
 
     // Data loading state
     if (pending) {
@@ -44,8 +54,17 @@ const ConditionalRenderer = (Component: Object) => {
     // Handle any other conditions based on project development
 
     // Pass result as a prop to the component
-    return <Component result={result} />;
+    return <Component result={result} navigation={navigation} />;
   };
+
+  ConditionalComp.defaultProps = {
+    err: '',
+    result: [],
+    apiCall: () => {},
+    pending: false,
+  };
+
+  return ConditionalComp;
 };
 
 export default ConditionalRenderer;

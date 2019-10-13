@@ -8,7 +8,7 @@
 import { RECIPE_TYPES } from 'action-type';
 
 const defaultState: DefaultState = {
-  pending: false,
+  pending: true,
   result: [],
   err: '',
 };
