@@ -8,7 +8,7 @@
 type Dispatch = (data: Object) => void;
 
 type Screens = {
-  [string]: React$Node | (() => React$Node),
+  [string]: Function | Object,
 };
 
 type DefaultState = {

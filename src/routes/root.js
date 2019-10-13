@@ -53,16 +53,16 @@ const StackNav = (screens: Screens): Object =>
   createStackNavigator(screens, COMMON_NAV_OPTIONS);
 
 // Screens for Recipes
-const RecipeStack = StackNav({
+const RecipeStack: Object = StackNav({
   [RECIPES]: Recipes,
   [CATEGORY_DETAIL]: CategoryDetail,
 });
 
 // Screens for Restaurants
-const RestaurantStack = StackNav({ [RESTAURANTS]: Restaurants });
+const RestaurantStack: Object = StackNav({ [RESTAURANTS]: Restaurants });
 
 // Tab container
-const Root = createAppContainer(
+const Root: Object = createAppContainer(
   createBottomTabNavigator(
     {
       [RECIPES]: RecipeStack,
