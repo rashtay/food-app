@@ -36,6 +36,42 @@ const style = EStylesheet.create({
     fontFamily: 'SfProDisplay-Bold',
     letterSpacing: 0.41,
   },
+
+  instructions: {
+    borderRadius: '$gutter',
+    margin: '$gutter * 2',
+    backgroundColor: '$color.color1',
+    shadowColor: '$color.color2',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+
+  step: {
+    padding: '$gutter * 2',
+    borderTopWidth: 1,
+    borderTopColor: '$color.color6',
+    flexDirection: 'row',
+  },
+
+  noBorder: {
+    borderTopWidth: 0,
+  },
+
+  stepNumber: {
+    fontFamily: 'SFProDisplay-Regular',
+    fontSize: 17,
+    lineHeight: 22,
+    color: '$color.color4',
+  },
+
+  stepDetails: {
+    marginLeft: 12,
+    fontFamily: 'SFProDisplay-Regular',
+    fontSize: 17,
+    lineHeight: 22,
+  },
 });
 
 export default style;

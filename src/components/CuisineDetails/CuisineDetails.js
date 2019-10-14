@@ -12,6 +12,7 @@ import { Header } from 'react-navigation-stack';
 import Carousel from 'components/Carousel/Carousel';
 import Bookmark from 'components/Bookmark/Bookmark';
 import BackButton from 'components/BackButton/BackButton';
+import Button from 'components/Button/Button';
 import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
 import { toTitleCase } from 'utils/string';
 import style from './style';
@@ -20,11 +21,23 @@ type Props = {
   navigation: Object,
 };
 
+const ONE = 1;
+const ZERO = 0;
+
 const CuisineDetails = (props: Props): React$Node => {
   const { navigation } = props;
   const { cuisineDetail, categoryName } = navigation.state.params;
-  const { gallery, name, people, mins } = cuisineDetail;
+  const { gallery, name, people, mins, instructions } = cuisineDetail;
   const headerHeight = Header.HEIGHT;
+
+  const renderInstructions = (steps: Array<string>) =>
+    steps.map((step: string, index: number) => (
+      <View key={step} style={[style.step, index === ZERO && style.noBorder]}>
+        <Text style={style.stepNumber}>{index + ONE}</Text>
+
+        <Text style={style.stepDetails}>{step}</Text>
+      </View>
+    ));
 
   return (
     <View style={style.container}>
@@ -60,6 +73,14 @@ const CuisineDetails = (props: Props): React$Node => {
             label={`${mins} minutes`}
           />
         </InfoBox>
+
+        {/* See Ingredients Button */}
+        <Button label="See Ingredients" onPress={() => {}} />
+
+        {/* Recipe */}
+        <View style={style.instructions}>
+          {renderInstructions(instructions)}
+        </View>
       </ScrollView>
     </View>
   );
