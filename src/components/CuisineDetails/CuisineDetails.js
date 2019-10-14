@@ -7,9 +7,10 @@
  */
 
 import React from 'react';
-import { View, Text, StatusBar, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, StatusBar } from 'react-native';
 import Carousel from 'components/Carousel/Carousel';
+import Bookmark from 'components/Bookmark/Bookmark';
+import BackButton from 'components/BackButton/BackButton';
 import { Header } from 'react-navigation-stack';
 import style from './style';
 
@@ -31,15 +32,9 @@ const CuisineDetails = (props: Props): React$Node => {
         <Carousel gallery={gallery} />
 
         <View style={[style.headerTop, { top: headerHeight }]}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <View style={style.backContainer}>
-              <Icon name="ios-arrow-back" />
+          <BackButton prevName={categoryName} navigation={navigation} />
 
-              <Text>{categoryName}</Text>
-            </View>
-          </TouchableOpacity>
-
-          <Icon name="md-bookmark" />
+          <Bookmark />
         </View>
 
         <Text>{name}</Text>

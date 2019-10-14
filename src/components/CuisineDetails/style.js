@@ -25,11 +25,6 @@ const style = EStylesheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-
-  backContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
 });
 
 export default style;
