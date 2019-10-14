@@ -6,13 +6,14 @@
  * @flow
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StatusBar, ScrollView } from 'react-native';
 import { Header } from 'react-navigation-stack';
 import Carousel from 'components/Carousel/Carousel';
 import Bookmark from 'components/Bookmark/Bookmark';
 import BackButton from 'components/BackButton/BackButton';
 import Button from 'components/Button/Button';
+import PopUp from 'components/PopUp/PopUp';
 import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
 import { toTitleCase } from 'utils/string';
 import style from './style';
@@ -26,9 +27,14 @@ const ZERO = 0;
 
 const CuisineDetails = (props: Props): React$Node => {
   const { navigation } = props;
+  const [showIngredients, toggleIngredients] = useState(false);
   const { cuisineDetail, categoryName } = navigation.state.params;
   const { gallery, name, people, mins, instructions } = cuisineDetail;
   const headerHeight = Header.HEIGHT;
+
+  const toggleIngredientModal = () => {
+    toggleIngredients(!showIngredients);
+  };
 
   const renderInstructions = (steps: Array<string>) =>
     steps.map((step: string, index: number) => (
@@ -75,12 +81,22 @@ const CuisineDetails = (props: Props): React$Node => {
         </InfoBox>
 
         {/* See Ingredients Button */}
-        <Button label="See Ingredients" onPress={() => {}} />
+        <Button label="See Ingredients" onPress={toggleIngredientModal} />
 
         {/* Recipe */}
         <View style={style.instructions}>
           {renderInstructions(instructions)}
         </View>
+
+        {/* Modal */}
+        <PopUp
+          isVisible={showIngredients}
+          title="Ingredients"
+          onClose={toggleIngredientModal}>
+          <View class={style.ingredients}>
+            <Text>List ingredients</Text>
+          </View>
+        </PopUp>
       </ScrollView>
     </View>
   );
