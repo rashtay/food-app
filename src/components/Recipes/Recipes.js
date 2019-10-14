@@ -40,7 +40,7 @@ const RecipesScreen = (props: Props) => {
 
   return (
     <>
-      <Header />
+      <Header title="Recipes" />
 
       <FlatList
         data={result}

@@ -11,11 +11,15 @@ import { View, Text } from 'react-native';
 import Search from 'components/Search/Search';
 import style from './style';
 
-const Header = () => (
+type Props = {
+  title: string,
+};
+
+const Header = ({ title }: Props) => (
   <View style={style.header}>
     <Search />
 
-    <Text style={style.headerTitle}>Recipes</Text>
+    <Text style={style.headerTitle}>{title}</Text>
   </View>
 );
 

@@ -16,7 +16,7 @@ const style = EStylesheet.create({
 
   headerTitle: {
     color: '$color.color1',
-    fontFamily: 'SFProDisplay-Bold',
+    fontFamily: 'SFProDisplay-Regular',
     fontSize: 34,
     lineHeight: 41,
     letterSpacing: 0.41,

@@ -11,6 +11,11 @@ const style = EStylesheet.create({
   container: {
     flex: 1,
   },
+
+  imgBg: {
+    width: '100%',
+    height: '100%',
+  },
 });
 
 export default style;

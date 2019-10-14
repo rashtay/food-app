@@ -18,6 +18,7 @@ import {
 import ConditionalRenderer from 'components/ConditionalRenderer/ConditionalRenderer';
 import Header from 'components/Header/Header';
 import routes from 'routes/routes';
+import MapImg from 'assets/images/map.jpg';
 import style from './style';
 
 type Props = {
@@ -53,9 +54,9 @@ const RestaurantsScreen = (props: Props): React$Node => {
 
   return (
     <>
-      <Header />
+      <Header title="Restaurants" />
 
-      <ImageBackground>
+      <ImageBackground source={MapImg} style={style.imgBg}>
         <FlatList
           data={result}
           renderItem={renderRestaurant}
