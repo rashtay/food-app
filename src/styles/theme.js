@@ -25,6 +25,7 @@ const theme = {
   color4: colors.brownGrey,
   color5: colors.persianRed,
   color6: colors.concrete,
+  color6_0: 'rgba(245, 245, 245, 0)',
 };
 
 export default theme;

@@ -30,7 +30,7 @@ const ConditionalRenderer = (Component: Object) => {
     }
 
     // Pass result as a prop to the component
-    renderComp = () => <Component result={result} navigation={navigation} />;
+    renderComp = () => <Component {...props} navigation={navigation} />;
 
     // Data empty/null state
     if (Array.isArray(result) && !result.length) {

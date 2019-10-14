@@ -9,7 +9,10 @@ import { connect } from 'react-redux';
 import Restaurants from 'components/Restaurants/Restaurants';
 import { getRestaurants } from 'actions/restaurants';
 
-const mapStateToProps = (state: Object) => state.restaurants;
+const mapStateToProps = (state: Object) => ({
+  ...state.restaurants,
+  ...state.tabBar,
+});
 
 export default connect(
   mapStateToProps,

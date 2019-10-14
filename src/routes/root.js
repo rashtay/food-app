@@ -20,6 +20,7 @@ import {
 import { theme } from 'styles/root';
 import FeedIcon from 'assets/icons/feed/icons-feed.png';
 import RestaurantIcon from 'assets/icons/restaurant/icons-restaurant.png';
+import TabBar from './TabBar';
 import routes from './routes';
 
 // Style the tab icons
@@ -91,6 +92,7 @@ const Root: Object = createAppContainer(
           );
         },
       }),
+      tabBarComponent: TabBar,
       tabBarOptions: { ...TAB_BAR_OPTIONS },
     },
   ),

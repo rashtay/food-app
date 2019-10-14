@@ -15,6 +15,7 @@ import {
   Image,
   FlatList,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import ConditionalRenderer from 'components/ConditionalRenderer/ConditionalRenderer';
 import Header from 'components/Header/Header';
 import routes from 'routes/routes';
@@ -24,12 +25,15 @@ import style from './style';
 type Props = {
   result: Categories,
   navigation: Object,
+  height: number,
 };
 
 const { RESTAURANT_DETAIL } = routes;
 
+const BOTTOM_LIST_SPACING = 30;
+
 const RestaurantsScreen = (props: Props): React$Node => {
-  const { result, navigation } = props;
+  const { result, navigation, height } = props;
 
   const keyExtractor = (item: Object) => `${item.id}`;
 
@@ -53,20 +57,29 @@ const RestaurantsScreen = (props: Props): React$Node => {
   );
 
   return (
-    <>
+    <View style={style.container}>
       <Header title="Restaurants" />
 
       <ImageBackground source={MapImg} style={style.imgBg}>
-        <FlatList
-          data={result}
-          renderItem={renderRestaurant}
-          keyExtractor={keyExtractor}
-          extraData={props}
-          contentContainerStyle={style.listContainer}
-          showsVerticalScrollIndicator={false}
-        />
+        <LinearGradient
+          colors={[style.$gradient2, style.$gradient1]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={style.linearGradient}>
+          <FlatList
+            data={result}
+            renderItem={renderRestaurant}
+            keyExtractor={keyExtractor}
+            extraData={props}
+            contentContainerStyle={[
+              style.listContainer,
+              { paddingBottom: height + BOTTOM_LIST_SPACING },
+            ]}
+            showsVerticalScrollIndicator={false}
+          />
+        </LinearGradient>
       </ImageBackground>
-    </>
+    </View>
   );
 };
 

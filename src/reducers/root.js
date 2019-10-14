@@ -12,10 +12,12 @@ import { combineReducers } from 'redux';
 import recipes from './recipes';
 import restaurants from './restaurants';
 import search from './search';
+import tabBar from './tab-bar';
 
 const appReducer = combineReducers({
   recipes,
   restaurants,
+  tabBar,
   search,
 });
 
