@@ -29,7 +29,7 @@ type Props = {
   height: number,
 };
 
-const { RESTAURANT_DETAIL } = routes;
+const { RESTAURANT_DETAILS } = routes;
 
 const BOTTOM_LIST_SPACING = 30;
 
@@ -41,20 +41,20 @@ const RestaurantsScreen = (props: Props): React$Node => {
   const renderRestaurant = ({ item }) => (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate(RESTAURANT_DETAIL, { categoryDetail: item })
+        navigation.navigate(RESTAURANT_DETAILS, { categoryDetail: item })
       }>
       <View style={style.restaurantItem}>
-        <View>
-          <View>
+        <View style={style.restaurantContent}>
+          <View style={style.nameContainer}>
             <Text style={style.name}>{item.name}</Text>
 
             <Text style={style.speciality}>{item.speciality}</Text>
           </View>
 
-          <View>
+          <View style={style.ratingContainer}>
             <Rating rating={item.rating} />
 
-            <Text style={style.reviews}>{item.reviews}</Text>
+            <Text style={style.reviews}>{item.reviews} reviews</Text>
           </View>
         </View>
 
@@ -71,7 +71,7 @@ const RestaurantsScreen = (props: Props): React$Node => {
         <LinearGradient
           colors={[style.$gradient2, style.$gradient1]}
           start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
+          end={{ x: 0, y: 0.4 }}
           style={style.linearGradient}>
           <FlatList
             data={result}

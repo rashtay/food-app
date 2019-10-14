@@ -20,10 +20,6 @@ const style = EStylesheet.create({
     height: '100%',
   },
 
-  linearGradient: {
-    height: '100%',
-  },
-
   listContainer: {
     paddingHorizontal: '$gutter * 2',
     justifyContent: 'flex-end',
@@ -35,11 +31,44 @@ const style = EStylesheet.create({
     backgroundColor: '$color.color1',
     borderRadius: '$gutter',
     marginBottom: '$gutter * 2',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     shadowColor: '$color.color2',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 2,
+  },
+
+  restaurantContent: {
+    justifyContent: 'space-between',
+  },
+
+  name: {
+    fontSize: 17,
+    lineHeight: 22,
+  },
+
+  speciality: {
+    fontSize: 13,
+    color: '$color.color4',
+  },
+
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  reviews: {
+    fontSize: 13,
+    color: '$color.color4',
+    marginLeft: '$gutter',
+  },
+
+  img: {
+    width: 100,
+    height: 68,
+    borderRadius: 8,
   },
 });
 

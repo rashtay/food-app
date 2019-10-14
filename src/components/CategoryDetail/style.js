@@ -27,7 +27,10 @@ const style = EStylesheet.create({
     height: 160,
   },
 
-  cuisineContainer: { height: '100%', position: 'relative' },
+  cuisineContainer: {
+    height: '100%',
+    justifyContent: 'space-between',
+  },
 
   cuisineName: {
     fontFamily: 'SFProDisplay-Bold',
@@ -40,8 +43,6 @@ const style = EStylesheet.create({
   cuisineMeta: {
     flexDirection: 'row',
     alignItems: 'center',
-    position: 'absolute',
-    bottom: 0,
   },
 
   separator: {

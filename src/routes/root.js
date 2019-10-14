@@ -13,9 +13,10 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {
   Recipes,
-  Restaurants,
   CategoryDetail,
   CuisineDetails,
+  Restaurants,
+  RestaurantDetails,
 } from 'containers/root';
 import { theme } from 'styles/root';
 import FeedIcon from 'assets/icons/feed/icons-feed.png';
@@ -29,7 +30,13 @@ const styles = StyleSheet.create({
 });
 
 // Route names for the screens
-const { RECIPES, RESTAURANTS, CATEGORY_DETAIL, CUISINE_DETAILS } = routes;
+const {
+  RECIPES,
+  RESTAURANTS,
+  CATEGORY_DETAIL,
+  CUISINE_DETAILS,
+  RESTAURANT_DETAILS,
+} = routes;
 
 // Images paths for the tab icons
 const IMAGE_PATH: Object = {
@@ -69,7 +76,10 @@ const RecipeStack: Object = StackNav({
 });
 
 // Screens for Restaurants
-const RestaurantStack: Object = StackNav({ [RESTAURANTS]: Restaurants });
+const RestaurantStack: Object = StackNav({
+  [RESTAURANTS]: Restaurants,
+  [RESTAURANT_DETAILS]: RestaurantDetails,
+});
 
 // Tab container
 const Root: Object = createAppContainer(
