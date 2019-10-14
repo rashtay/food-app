@@ -2,7 +2,7 @@
  * Author: Rahul Shetty
  * Date: 10/10/2019
  *
- * Component to show list of restaurants in the vicinity
+ * Component to show exception messages
  * @flow
  */
 

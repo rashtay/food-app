@@ -12,6 +12,7 @@ import AppSafeArea from 'components/AppSafeArea/AppSafeArea';
 import ImageCard from 'components/ImageCard/ImageCard';
 import Search from 'components/Search/ReduxSearch';
 import ExceptionBox from 'components/ExceptionBox/ExceptionBox';
+import routes from 'routes/routes';
 import { toTitleCase } from 'utils/string';
 import style from './style';
 
@@ -19,6 +20,8 @@ type Props = {
   navigation: Object,
   isActive: boolean,
 };
+
+const { CUISINE_DETAILS } = routes;
 
 const HIDE = 0;
 const SHOW = 1;
@@ -43,7 +46,12 @@ const CategoryDetail = (props: Props): React$Node => {
 
   const renderCuisines = ({ item }) => (
     <ImageCard
-      onPress={() => navigation.navigate()}
+      onPress={() =>
+        navigation.navigate(CUISINE_DETAILS, {
+          cuisineDetail: item,
+          categoryName: item.name,
+        })
+      }
       imgURL={item.imgURL}
       containerStyle={style.cardContainer}>
       <View style={style.cuisineContainer}>

@@ -17,7 +17,9 @@ const colors = {
 const theme = {
   color1: colors.white,
   color1_70: 'rgba(255, 255, 255, 0.7)',
+  color1_50: 'rgba(255, 255, 255, 0.5)',
   color2: colors.black,
+  color2_30: 'rgba(0, 0, 0, 0.3)',
   color3: colors.darkLimeGreen,
   color4: colors.brownGrey,
   color5: colors.persianRed,
