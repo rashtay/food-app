@@ -8,6 +8,16 @@
 import EStylesheet from 'react-native-extended-stylesheet';
 
 const style = EStylesheet.create({
+  wrapper: {
+    paddingHorizontal: '$gutter * 2',
+  },
+
+  input: {
+    padding: '$gutter',
+    borderBottomWidth: 1,
+    borderColor: '$color.color4',
+  },
+
   listContainer: {
     paddingHorizontal: '$gutter * 2',
     paddingVertical: '$gutter',

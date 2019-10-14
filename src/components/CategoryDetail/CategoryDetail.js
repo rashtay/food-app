@@ -6,20 +6,37 @@
  * @flow
  */
 
-import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, FlatList, Animated } from 'react-native';
 import AppSafeArea from 'components/AppSafeArea/AppSafeArea';
 import ImageCard from 'components/ImageCard/ImageCard';
+import Search from 'components/Search/ReduxSearch';
 import { toTitleCase } from 'utils/string';
 import style from './style';
 
 type Props = {
   navigation: Object,
+  isActive: boolean,
 };
 
+const HIDE = 0;
+const SHOW = 1;
+
+const INPUT_HEIGHT = 40;
+
 const CategoryDetail = (props: Props): React$Node => {
-  const { navigation } = props;
+  const { navigation, isActive } = props;
   const { cuisines } = navigation.state.params.categoryDetail;
+  const [searchText, onChangeText] = useState('');
+  const [expandAnim] = useState(new Animated.Value(HIDE));
+
+  // On state change, start animating. Basically, we'll expand and shrink the input on pressing search
+  useEffect(() => {
+    Animated.timing(expandAnim, {
+      toValue: isActive ? SHOW : HIDE,
+      duration: 500,
+    }).start();
+  }, [isActive, expandAnim]);
 
   const keyExtractor = (item: Object) => `${item.id}`;
 
@@ -42,8 +59,30 @@ const CategoryDetail = (props: Props): React$Node => {
     </ImageCard>
   );
 
+  // Animate the styles based on expandAnim state changes
+  const searchAnimStyle = {
+    height: expandAnim.interpolate({
+      inputRange: [HIDE, SHOW],
+      outputRange: [HIDE, INPUT_HEIGHT],
+    }),
+    opacity: expandAnim.interpolate({
+      inputRange: [HIDE, SHOW],
+      outputRange: [HIDE, SHOW],
+    }),
+  };
+
   return (
     <AppSafeArea>
+      <Animated.View style={[style.wrapper, searchAnimStyle]}>
+        <TextInput
+          value={searchText}
+          onChangeText={onChangeText}
+          underlineColorAndroid="transparent"
+          placeholder="Search..."
+          style={style.input}
+        />
+      </Animated.View>
+
       <FlatList
         data={cuisines}
         renderItem={renderCuisines}
@@ -59,6 +98,7 @@ const CategoryDetail = (props: Props): React$Node => {
 CategoryDetail.navigationOptions = ({ navigation }: Object) => {
   return {
     title: toTitleCase(navigation.state.params.categoryDetail.name),
+    headerRight: <Search />,
   };
 };
 

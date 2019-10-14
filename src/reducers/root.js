@@ -10,9 +10,11 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { USER_LOGOUT } from 'action-type';
 import { combineReducers } from 'redux';
 import recipes from './recipes';
+import search from './search';
 
 const appReducer = combineReducers({
   recipes,
+  search,
 });
 
 const root = (state: Object, action: Object) => {

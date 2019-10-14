@@ -10,7 +10,7 @@ const colors = {
   black: '#000',
   white: '#fff',
   darkLimeGreen: '#73c700',
-  brownGrey: '#999999',
+  brownGrey: '#999',
 };
 
 const theme = {

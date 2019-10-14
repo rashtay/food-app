@@ -6,5 +6,8 @@
  */
 
 import CategoryDetail from 'components/CategoryDetail/CategoryDetail';
+import { connect } from 'react-redux';
 
-export default CategoryDetail;
+const mapStateToProps = state => state.search;
+
+export default connect(mapStateToProps)(CategoryDetail);

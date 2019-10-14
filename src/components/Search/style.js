@@ -38,6 +38,12 @@ const style = EStylesheet.create({
     color: '$color.color1',
   },
 
+  reduxSearchIcon: {
+    color: '$color.color1',
+    fontSize: 24,
+    paddingHorizontal: '$gutter * 2',
+  },
+
   closeIcon: {
     color: '$color.color2',
   },
