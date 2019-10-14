@@ -17,7 +17,7 @@ type Props = {
 
 const Loader = ({ containerStyle, color }: Props) => (
   <View style={[style.container, containerStyle]}>
-    <ActivityIndicator size="large" color={color || '#0000ff'} />
+    <ActivityIndicator size="large" color={color || style.$themeColor} />
   </View>
 );
 

@@ -7,9 +7,9 @@
  */
 
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
 import AppSafeArea from 'components/AppSafeArea/AppSafeArea';
 import Loader from 'components/Loader/Loader';
+import ExceptionBox from 'components/ExceptionBox/ExceptionBox';
 import { toTitleCase } from 'utils/string';
 
 type Props = {
@@ -23,10 +23,20 @@ type Props = {
 const ConditionalRenderer = (Component: Object) => {
   const ConditionalComp = (props: Props): React$Node => {
     const { err, pending, result, apiCall, navigation } = props;
-    let renderComp = () => <View />;
+    let renderComp = () => <></>;
 
     if (typeof apiCall === 'function') {
       useEffect(apiCall, []);
+    }
+
+    // Pass result as a prop to the component
+    renderComp = () => <Component result={result} navigation={navigation} />;
+
+    // Data empty/null state
+    if (Array.isArray(result) && !result.length) {
+      renderComp = () => (
+        <ExceptionBox title="OOPS!" message="The list seems to be empty :(" />
+      );
     }
 
     // Data loading state
@@ -36,28 +46,10 @@ const ConditionalRenderer = (Component: Object) => {
 
     // Error state
     if (err) {
-      renderComp = () => (
-        <View>
-          <Text>OOPS!</Text>
-
-          <Text>{err}</Text>
-        </View>
-      );
-    }
-
-    // Data empty/null state
-    if (Array.isArray(result) && !result.length) {
-      renderComp = () => (
-        <View>
-          <Text>The list seems to be empty :(</Text>
-        </View>
-      );
+      renderComp = () => <ExceptionBox title="OOPS!" message={err} />;
     }
 
     // Handle any other conditions based on project development
-
-    // Pass result as a prop to the component
-    renderComp = () => <Component result={result} navigation={navigation} />;
 
     return <AppSafeArea>{renderComp()}</AppSafeArea>;
   };

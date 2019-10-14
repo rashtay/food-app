@@ -8,6 +8,8 @@
 import EStylesheet from 'react-native-extended-stylesheet';
 
 const style = EStylesheet.create({
+  $themeColor: '$color.color3',
+
   container: {
     flex: 1,
     justifyContent: 'center',

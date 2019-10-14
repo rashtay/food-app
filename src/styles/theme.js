@@ -11,6 +11,7 @@ const colors = {
   white: '#fff',
   darkLimeGreen: '#73c700',
   brownGrey: '#999',
+  persianRed: '#d32f2f',
 };
 
 const theme = {
@@ -19,6 +20,7 @@ const theme = {
   color2: colors.black,
   color3: colors.darkLimeGreen,
   color4: colors.brownGrey,
+  color5: colors.persianRed,
 };
 
 export default theme;
