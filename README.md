@@ -1,3 +1,3 @@
 - change app name in react0tron config
 - Rename with react-native-rename
--
+- Fonts aren't the same

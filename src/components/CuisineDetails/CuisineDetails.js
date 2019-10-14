@@ -7,13 +7,14 @@
  */
 
 import React, { useState } from 'react';
-import { View, Text, StatusBar, ScrollView } from 'react-native';
+import { View, Text, StatusBar, ScrollView, FlatList } from 'react-native';
 import { Header } from 'react-navigation-stack';
 import Carousel from 'components/Carousel/Carousel';
 import Bookmark from 'components/Bookmark/Bookmark';
 import BackButton from 'components/BackButton/BackButton';
 import Button from 'components/Button/Button';
 import PopUp from 'components/PopUp/PopUp';
+import Checkbox from 'components/Checkbox/Checkbox';
 import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
 import { toTitleCase } from 'utils/string';
 import style from './style';
@@ -25,15 +26,45 @@ type Props = {
 const ONE = 1;
 const ZERO = 0;
 
+// Reminder variables
+let addedReminders = {};
+let tempAddedReminders = {};
+
 const CuisineDetails = (props: Props): React$Node => {
   const { navigation } = props;
   const [showIngredients, toggleIngredients] = useState(false);
   const { cuisineDetail, categoryName } = navigation.state.params;
-  const { gallery, name, people, mins, instructions } = cuisineDetail;
+  const {
+    gallery,
+    name,
+    people,
+    mins,
+    instructions,
+    ingredients,
+  } = cuisineDetail;
   const headerHeight = Header.HEIGHT;
+
+  const keyExtractor = (item: Object) => `${item.id}`;
 
   const toggleIngredientModal = () => {
     toggleIngredients(!showIngredients);
+  };
+
+  // On checkbox press, save and delete checkbox values
+  const onPressCheckbox = (item: Object, isChecked: boolean) => {
+    if (isChecked) {
+      tempAddedReminders[item.id] = { ...item };
+    } else {
+      delete tempAddedReminders[item.id];
+    }
+  };
+
+  // Add reminders for the ingredients
+  const addReminders = () => {
+    addedReminders = { ...tempAddedReminders, ...addedReminders };
+    tempAddedReminders = {};
+
+    toggleIngredientModal();
   };
 
   const renderInstructions = (steps: Array<string>) =>
@@ -44,6 +75,17 @@ const CuisineDetails = (props: Props): React$Node => {
         <Text style={style.stepDetails}>{step}</Text>
       </View>
     ));
+
+  const renderIngredients = ({ item }: Object) => (
+    <Checkbox
+      key={item.id}
+      title={item.name}
+      subtitle={item.quantity}
+      onPress={isChecked => onPressCheckbox(item, isChecked)}
+      disabled={!!addedReminders[item.id]}
+      defaultState={addedReminders[item.id] || tempAddedReminders[item.id]}
+    />
+  );
 
   return (
     <View style={style.container}>
@@ -93,9 +135,15 @@ const CuisineDetails = (props: Props): React$Node => {
           isVisible={showIngredients}
           title="Ingredients"
           onClose={toggleIngredientModal}>
-          <View class={style.ingredients}>
-            <Text>List ingredients</Text>
-          </View>
+          <FlatList
+            data={ingredients}
+            renderItem={renderIngredients}
+            extraData={props}
+            keyExtractor={keyExtractor}
+            showsVerticalScrollIndicator={false}
+          />
+
+          <Button label="Add to Reminders" onPress={addReminders} />
         </PopUp>
       </ScrollView>
     </View>
