@@ -11,6 +11,7 @@ import { View, Text, TextInput, FlatList, Animated } from 'react-native';
 import AppSafeArea from 'components/AppSafeArea/AppSafeArea';
 import ImageCard from 'components/ImageCard/ImageCard';
 import Search from 'components/Search/ReduxSearch';
+import ExceptionBox from 'components/ExceptionBox/ExceptionBox';
 import { toTitleCase } from 'utils/string';
 import style from './style';
 
@@ -83,14 +84,21 @@ const CategoryDetail = (props: Props): React$Node => {
         />
       </Animated.View>
 
-      <FlatList
-        data={cuisines}
-        renderItem={renderCuisines}
-        keyExtractor={keyExtractor}
-        extraData={props}
-        contentContainerStyle={style.listContainer}
-        showsVerticalScrollIndicator={false}
-      />
+      {cuisines.length ? (
+        <FlatList
+          data={cuisines}
+          renderItem={renderCuisines}
+          keyExtractor={keyExtractor}
+          extraData={props}
+          contentContainerStyle={style.listContainer}
+          showsVerticalScrollIndicator={false}
+        />
+      ) : (
+        <ExceptionBox
+          title="OOPS!"
+          message="The cuisine list seems to be empty :("
+        />
+      )}
     </AppSafeArea>
   );
 };
