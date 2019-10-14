@@ -10,6 +10,7 @@ import EStylesheet from 'react-native-extended-stylesheet';
 const style = EStylesheet.create({
   container: {
     flex: 1,
+    backgroundColor: '$color.color6',
   },
 
   header: {

@@ -7,11 +7,12 @@
  */
 
 import React from 'react';
-import { View, Text, StatusBar } from 'react-native';
+import { View, Text, StatusBar, ScrollView } from 'react-native';
 import { Header } from 'react-navigation-stack';
 import Carousel from 'components/Carousel/Carousel';
 import Bookmark from 'components/Bookmark/Bookmark';
 import BackButton from 'components/BackButton/BackButton';
+import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
 import { toTitleCase } from 'utils/string';
 import style from './style';
 
@@ -22,13 +23,14 @@ type Props = {
 const CuisineDetails = (props: Props): React$Node => {
   const { navigation } = props;
   const { cuisineDetail, categoryName } = navigation.state.params;
-  const { gallery, name } = cuisineDetail;
+  const { gallery, name, people, mins } = cuisineDetail;
   const headerHeight = Header.HEIGHT;
 
   return (
     <View style={style.container}>
       <StatusBar translucent barStyle="light-content" />
 
+      {/* Header */}
       <View style={style.header}>
         <Carousel gallery={gallery} />
 
@@ -43,6 +45,22 @@ const CuisineDetails = (props: Props): React$Node => {
 
         <Text style={style.cuisineName}>{name}</Text>
       </View>
+
+      <ScrollView>
+        {/* Cuisine Meta Data */}
+        <InfoBox>
+          <InfoItem
+            iconName="restaurant"
+            libraryName="MaterialIcons"
+            label={`${people} people`}
+          />
+          <InfoItem
+            iconName="ios-clock"
+            libraryName="Ionicons"
+            label={`${mins} minutes`}
+          />
+        </InfoBox>
+      </ScrollView>
     </View>
   );
 };
