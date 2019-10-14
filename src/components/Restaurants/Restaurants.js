@@ -7,13 +7,68 @@
  */
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  Image,
+  FlatList,
+} from 'react-native';
+import ConditionalRenderer from 'components/ConditionalRenderer/ConditionalRenderer';
+import Header from 'components/Header/Header';
+import routes from 'routes/routes';
 import style from './style';
 
-const Restaurants = (): React$Node => (
-  <View style={style.container}>
-    <Text>Restaurants</Text>
-  </View>
-);
+type Props = {
+  result: Categories,
+  navigation: Object,
+};
+
+const { RESTAURANT_DETAIL } = routes;
+
+const RestaurantsScreen = (props: Props): React$Node => {
+  const { result, navigation } = props;
+
+  const keyExtractor = (item: Object) => `${item.id}`;
+
+  const renderRestaurant = ({ item }) => (
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate(RESTAURANT_DETAIL, { categoryDetail: item })
+      }>
+      <View>
+        <View>
+          <Text style={style.categoryTagline}>{item.tagline}</Text>
+
+          <Text style={style.categoryName}>{item.name}</Text>
+        </View>
+
+        <View>
+          <Image />
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+
+  return (
+    <>
+      <Header />
+
+      <ImageBackground>
+        <FlatList
+          data={result}
+          renderItem={renderRestaurant}
+          keyExtractor={keyExtractor}
+          extraData={props}
+          contentContainerStyle={style.listContainer}
+          showsVerticalScrollIndicator={false}
+        />
+      </ImageBackground>
+    </>
+  );
+};
+
+const Restaurants = ConditionalRenderer(RestaurantsScreen);
 
 export default Restaurants;

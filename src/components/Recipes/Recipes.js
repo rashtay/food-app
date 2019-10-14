@@ -7,11 +7,10 @@
  */
 
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { Text, FlatList } from 'react-native';
 import ConditionalRenderer from 'components/ConditionalRenderer/ConditionalRenderer';
-import AppSafeArea from 'components/AppSafeArea/AppSafeArea';
+import Header from 'components/Header/Header';
 import ImageCard from 'components/ImageCard/ImageCard';
-import Search from 'components/Search/Search';
 import routes from 'routes/routes';
 import style from './style';
 
@@ -40,12 +39,8 @@ const RecipesScreen = (props: Props) => {
   );
 
   return (
-    <AppSafeArea>
-      <View style={style.header}>
-        <Search />
-
-        <Text style={style.headerTitle}>Recipes</Text>
-      </View>
+    <>
+      <Header />
 
       <FlatList
         data={result}
@@ -55,7 +50,7 @@ const RecipesScreen = (props: Props) => {
         contentContainerStyle={style.listContainer}
         showsVerticalScrollIndicator={false}
       />
-    </AppSafeArea>
+    </>
   );
 };
 

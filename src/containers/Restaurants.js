@@ -5,6 +5,15 @@
  * @flow
  */
 
+import { connect } from 'react-redux';
 import Restaurants from 'components/Restaurants/Restaurants';
+import { getRestaurants } from 'actions/restaurants';
 
-export default Restaurants;
+const mapStateToProps = (state: Object) => state.restaurants;
+
+export default connect(
+  mapStateToProps,
+  {
+    apiCall: getRestaurants,
+  },
+)(Restaurants);
