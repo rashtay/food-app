@@ -10,7 +10,7 @@ import EStylesheet from 'react-native-extended-stylesheet';
 const style = EStylesheet.create({
   bookmark: {
     color: '$color.color1',
-    fontSize: 22,
+    fontSize: 26,
   },
 });
 

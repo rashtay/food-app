@@ -30,7 +30,7 @@ const INPUT_HEIGHT = 40;
 
 const CategoryDetail = (props: Props): React$Node => {
   const { navigation, isActive } = props;
-  const { cuisines } = navigation.state.params.categoryDetail;
+  const { cuisines, name } = navigation.state.params.categoryDetail;
   const [searchText, onChangeText] = useState('');
   const [expandAnim] = useState(new Animated.Value(HIDE));
 
@@ -49,7 +49,7 @@ const CategoryDetail = (props: Props): React$Node => {
       onPress={() =>
         navigation.navigate(CUISINE_DETAILS, {
           cuisineDetail: item,
-          categoryName: item.name,
+          categoryName: name,
         })
       }
       imgURL={item.imgURL}

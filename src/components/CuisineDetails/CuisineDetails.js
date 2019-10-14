@@ -8,10 +8,11 @@
 
 import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
+import { Header } from 'react-navigation-stack';
 import Carousel from 'components/Carousel/Carousel';
 import Bookmark from 'components/Bookmark/Bookmark';
 import BackButton from 'components/BackButton/BackButton';
-import { Header } from 'react-navigation-stack';
+import { toTitleCase } from 'utils/string';
 import style from './style';
 
 type Props = {
@@ -32,12 +33,15 @@ const CuisineDetails = (props: Props): React$Node => {
         <Carousel gallery={gallery} />
 
         <View style={[style.headerTop, { top: headerHeight }]}>
-          <BackButton prevName={categoryName} navigation={navigation} />
+          <BackButton
+            prevName={toTitleCase(categoryName)}
+            navigation={navigation}
+          />
 
           <Bookmark />
         </View>
 
-        <Text>{name}</Text>
+        <Text style={style.cuisineName}>{name}</Text>
       </View>
     </View>
   );

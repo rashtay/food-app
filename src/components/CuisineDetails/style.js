@@ -25,6 +25,16 @@ const style = EStylesheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+
+  cuisineName: {
+    position: 'absolute',
+    paddingHorizontal: '$gutter * 2',
+    bottom: '$gutter',
+    fontSize: 26,
+    color: '$color.color1',
+    fontFamily: 'SfProDisplay-Bold',
+    letterSpacing: 0.41,
+  },
 });
 
 export default style;
