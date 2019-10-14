@@ -9,6 +9,10 @@ declare module 'react-native' {
   declare module.exports: any;
 }
 
+declare module 'react-native-safe-area-view' {
+  declare module.exports: any;
+}
+
 declare module 'redux-persist' {
   declare module.exports: any;
 }
@@ -38,6 +42,10 @@ declare module 'react-native-firebase' {
 }
 
 declare module 'react-native/Libraries/vendor/emitter/EventEmitter' {
+  declare module.exports: any;
+}
+
+declare module 'react-native/Libraries/Components/View/ViewPropTypes' {
   declare module.exports: any;
 }
 

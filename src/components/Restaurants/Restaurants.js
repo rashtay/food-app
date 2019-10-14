@@ -18,6 +18,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import ConditionalRenderer from 'components/ConditionalRenderer/ConditionalRenderer';
 import Header from 'components/Header/Header';
+import Rating from 'components/Rating/Rating';
 import routes from 'routes/routes';
 import MapImg from 'assets/images/map.jpg';
 import style from './style';
@@ -42,16 +43,22 @@ const RestaurantsScreen = (props: Props): React$Node => {
       onPress={() =>
         navigation.navigate(RESTAURANT_DETAIL, { categoryDetail: item })
       }>
-      <View>
+      <View style={style.restaurantItem}>
         <View>
-          <Text style={style.categoryTagline}>{item.tagline}</Text>
+          <View>
+            <Text style={style.name}>{item.name}</Text>
 
-          <Text style={style.categoryName}>{item.name}</Text>
+            <Text style={style.speciality}>{item.speciality}</Text>
+          </View>
+
+          <View>
+            <Rating rating={item.rating} />
+
+            <Text style={style.reviews}>{item.reviews}</Text>
+          </View>
         </View>
 
-        <View>
-          <Image />
-        </View>
+        <Image source={{ uri: item.imgURL }} style={style.img} />
       </View>
     </TouchableOpacity>
   );

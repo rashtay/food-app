@@ -22,6 +22,7 @@ const theme = {
   color2: colors.black,
   color2_30: 'rgba(0, 0, 0, 0.3)',
   color3: colors.darkLimeGreen,
+  color3_50: 'rgba(115, 199, 0, 0.3)',
   color4: colors.brownGrey,
   color5: colors.persianRed,
   color6: colors.concrete,

@@ -29,6 +29,18 @@ const style = EStylesheet.create({
     justifyContent: 'flex-end',
     height: '100%',
   },
+
+  restaurantItem: {
+    padding: '$gutter * 2',
+    backgroundColor: '$color.color1',
+    borderRadius: '$gutter',
+    marginBottom: '$gutter * 2',
+    shadowColor: '$color.color2',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
 });
 
 export default style;
