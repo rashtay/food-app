@@ -8,15 +8,11 @@
 
 import React, { useState } from 'react';
 import { View, Text, StatusBar, ScrollView, FlatList } from 'react-native';
-import { Header } from 'react-navigation-stack';
-import Carousel from 'components/Carousel/Carousel';
-import Bookmark from 'components/Bookmark/Bookmark';
-import BackButton from 'components/BackButton/BackButton';
+import GalleryHeader from 'components/Header/GalleryHeader';
 import Button from 'components/Button/Button';
 import PopUp from 'components/PopUp/PopUp';
 import Checkbox from 'components/Checkbox/Checkbox';
 import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
-import { toTitleCase } from 'utils/string';
 import style from './style';
 
 type Props = {
@@ -42,7 +38,6 @@ const CuisineDetails = (props: Props): React$Node => {
     instructions,
     ingredients,
   } = cuisineDetail;
-  const headerHeight = Header.HEIGHT;
 
   const keyExtractor = (item: Object) => `${item.id}`;
 
@@ -92,20 +87,12 @@ const CuisineDetails = (props: Props): React$Node => {
       <StatusBar translucent barStyle="light-content" />
 
       {/* Header */}
-      <View style={style.header}>
-        <Carousel gallery={gallery} />
-
-        <View style={[style.headerTop, { top: headerHeight }]}>
-          <BackButton
-            prevName={toTitleCase(categoryName)}
-            navigation={navigation}
-          />
-
-          <Bookmark />
-        </View>
-
-        <Text style={style.cuisineName}>{name}</Text>
-      </View>
+      <GalleryHeader
+        backTitle={categoryName}
+        title={name}
+        gallery={gallery}
+        navigation={navigation}
+      />
 
       <ScrollView>
         {/* Cuisine Meta Data */}

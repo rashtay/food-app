@@ -72,16 +72,6 @@ const style = EStylesheet.create({
     fontSize: 17,
     lineHeight: 22,
   },
-
-  modalContainer: {
-    margin: 0,
-    justifyContent: 'flex-end',
-  },
-
-  modalWrapper: {
-    height: '70%',
-    backgroundColor: '$color.color1',
-  },
 });
 
 export default style;

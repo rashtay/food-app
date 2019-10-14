@@ -7,151 +7,91 @@
  */
 
 import React, { useState } from 'react';
-import { View, Text, StatusBar, ScrollView, FlatList } from 'react-native';
-import { Header } from 'react-navigation-stack';
-import Carousel from 'components/Carousel/Carousel';
-import Bookmark from 'components/Bookmark/Bookmark';
-import BackButton from 'components/BackButton/BackButton';
+import { View, Text, StatusBar, ScrollView } from 'react-native';
+import GalleryHeader from 'components/Header/GalleryHeader';
 import Button from 'components/Button/Button';
 import PopUp from 'components/PopUp/PopUp';
-import Checkbox from 'components/Checkbox/Checkbox';
 import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
-import { toTitleCase } from 'utils/string';
+import Rating from 'components/Rating/Rating';
 import style from './style';
 
 type Props = {
   navigation: Object,
 };
 
-const ONE = 1;
-const ZERO = 0;
+// const ONE = 1;
 
-// Reminder variables
-let addedReminders = {};
-let tempAddedReminders = {};
-
-const CuisineDetails = (props: Props): React$Node => {
+const RestaurantDetails = (props: Props): React$Node => {
   const { navigation } = props;
-  const [showIngredients, toggleIngredients] = useState(false);
-  const { cuisineDetail, categoryName } = navigation.state.params;
+  const [showBookings, toggleBookings] = useState(false);
+  const { restaurantDetail, restaurantName } = navigation.state.params;
   const {
     gallery,
+    euros,
     name,
-    people,
-    mins,
-    instructions,
-    ingredients,
-  } = cuisineDetail;
-  const headerHeight = Header.HEIGHT;
+    rating,
+    opensAt,
+    closesAt,
+    reviews,
+  } = restaurantDetail;
 
-  const keyExtractor = (item: Object) => `${item.id}`;
-
-  const toggleIngredientModal = () => {
-    toggleIngredients(!showIngredients);
+  const toggleBookingModal = () => {
+    toggleBookings(!showBookings);
   };
-
-  // On checkbox press, save and delete checkbox values
-  const onPressCheckbox = (item: Object, isChecked: boolean) => {
-    if (isChecked) {
-      tempAddedReminders[item.id] = { ...item };
-    } else {
-      delete tempAddedReminders[item.id];
-    }
-  };
-
-  // Add reminders for the ingredients
-  const addReminders = () => {
-    addedReminders = { ...tempAddedReminders, ...addedReminders };
-    tempAddedReminders = {};
-
-    toggleIngredientModal();
-  };
-
-  const renderInstructions = (steps: Array<string>) =>
-    steps.map((step: string, index: number) => (
-      <View key={step} style={[style.step, index === ZERO && style.noBorder]}>
-        <Text style={style.stepNumber}>{index + ONE}</Text>
-
-        <Text style={style.stepDetails}>{step}</Text>
-      </View>
-    ));
-
-  const renderIngredients = ({ item }: Object) => (
-    <Checkbox
-      key={item.id}
-      title={item.name}
-      subtitle={item.quantity}
-      onPress={isChecked => onPressCheckbox(item, isChecked)}
-      disabled={!!addedReminders[item.id]}
-      defaultState={addedReminders[item.id] || tempAddedReminders[item.id]}
-    />
-  );
 
   return (
     <View style={style.container}>
       <StatusBar translucent barStyle="light-content" />
 
       {/* Header */}
-      <View style={style.header}>
-        <Carousel gallery={gallery} />
-
-        <View style={[style.headerTop, { top: headerHeight }]}>
-          <BackButton
-            prevName={toTitleCase(categoryName)}
-            navigation={navigation}
-          />
-
-          <Bookmark />
-        </View>
-
-        <Text style={style.cuisineName}>{name}</Text>
-      </View>
+      <GalleryHeader
+        backTitle={restaurantName}
+        title={name}
+        gallery={gallery}
+        navigation={navigation}
+      />
 
       <ScrollView>
         {/* Cuisine Meta Data */}
         <InfoBox>
           <InfoItem
-            iconName="restaurant"
-            libraryName="MaterialIcons"
-            label={`${people} people`}
+            iconName="money-bill-alt"
+            libraryName="FontAwesome5"
+            label={`€ ${euros}`}
           />
+
+          <View>
+            <Rating rating={rating} />
+
+            <Text style={style.reviews}>{reviews} reviews</Text>
+          </View>
+
           <InfoItem
             iconName="ios-clock"
             libraryName="Ionicons"
-            label={`${mins} minutes`}
+            label={`${opensAt} - ${closesAt}`}
           />
         </InfoBox>
 
         {/* See Ingredients Button */}
-        <Button label="See Ingredients" onPress={toggleIngredientModal} />
-
-        {/* Recipe */}
-        <View style={style.instructions}>
-          {renderInstructions(instructions)}
-        </View>
+        <Button label="See Ingredients" onPress={toggleBookingModal} />
 
         {/* Modal */}
         <PopUp
-          isVisible={showIngredients}
+          isVisible={showBookings}
           title="Ingredients"
-          onClose={toggleIngredientModal}>
-          <FlatList
-            data={ingredients}
-            renderItem={renderIngredients}
-            extraData={props}
-            keyExtractor={keyExtractor}
-            showsVerticalScrollIndicator={false}
-          />
-
-          <Button label="Add to Reminders" onPress={addReminders} />
+          onClose={toggleBookingModal}>
+          <View>
+            <Text>Hey</Text>
+          </View>
         </PopUp>
       </ScrollView>
     </View>
   );
 };
 
-CuisineDetails.navigationOptions = {
+RestaurantDetails.navigationOptions = {
   header: null,
 };
 
-export default CuisineDetails;
+export default RestaurantDetails;

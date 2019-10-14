@@ -21,6 +21,30 @@ const style = EStylesheet.create({
     lineHeight: 41,
     letterSpacing: 0.41,
   },
+
+  galleryheader: {
+    width: '100%',
+    position: 'relative',
+  },
+
+  galleryheaderTop: {
+    width: '100%',
+    position: 'absolute',
+    paddingHorizontal: '$gutter * 2',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  galleryTitle: {
+    position: 'absolute',
+    paddingHorizontal: '$gutter * 2',
+    bottom: '$gutter',
+    fontSize: 26,
+    color: '$color.color1',
+    fontFamily: 'SfProDisplay-Bold',
+    letterSpacing: 0.41,
+  },
 });
 
 export default style;

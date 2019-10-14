@@ -41,7 +41,10 @@ const RestaurantsScreen = (props: Props): React$Node => {
   const renderRestaurant = ({ item }) => (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate(RESTAURANT_DETAILS, { categoryDetail: item })
+        navigation.navigate(RESTAURANT_DETAILS, {
+          restaurantDetail: item,
+          restaurantName: 'Restaurants',
+        })
       }>
       <View style={style.restaurantItem}>
         <View style={style.restaurantContent}>

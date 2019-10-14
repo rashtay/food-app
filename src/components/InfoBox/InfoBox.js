@@ -12,11 +12,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import type { IoniconsGlyphs } from 'react-native-vector-icons/Ionicons.js.flow';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import type { MaterialIconsGlyphs } from 'react-native-vector-icons/MaterialIcons.js.flow';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import type { FontAwesome5Glyphs } from 'react-native-vector-icons/FontAwesome5.js.flow';
 import style from './style';
 
 const ICONS = {
   Ionicons,
   MaterialIcons,
+  FontAwesome5,
 };
 
 type InfoBoxProps = {
@@ -24,8 +27,8 @@ type InfoBoxProps = {
 };
 
 type InfoItemProps = {
-  iconName: IoniconsGlyphs | MaterialIconsGlyphs,
-  libraryName: 'MaterialIcons' | 'Ionicons',
+  iconName: IoniconsGlyphs | MaterialIconsGlyphs | FontAwesome5Glyphs,
+  libraryName: 'MaterialIcons' | 'Ionicons' | 'FontAwesome5',
   label: string,
 };
 
