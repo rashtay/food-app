@@ -17,9 +17,16 @@ type Props = {
   onClose: Function,
   children: React$Node,
   title: string,
+  height?: number | string,
 };
 
-const PopUp = ({ isVisible, onClose, children, title }: Props): React$Node => (
+const PopUp = ({
+  isVisible,
+  onClose,
+  children,
+  title,
+  height,
+}: Props): React$Node => (
   <Modal
     animationType="slide"
     transparent
@@ -28,7 +35,7 @@ const PopUp = ({ isVisible, onClose, children, title }: Props): React$Node => (
     backdropColor="black"
     backdropOpacity={0.5}
     style={style.container}>
-    <View style={style.wrapper}>
+    <View style={[style.wrapper, { height }]}>
       <TouchableOpacity onPress={onClose}>
         <View style={style.header}>
           <Icon name="arrow-down" style={style.icon} />
@@ -41,5 +48,9 @@ const PopUp = ({ isVisible, onClose, children, title }: Props): React$Node => (
     </View>
   </Modal>
 );
+
+PopUp.defaultProps = {
+  height: '70%',
+};
 
 export default PopUp;

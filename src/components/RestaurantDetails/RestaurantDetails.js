@@ -22,6 +22,8 @@ import PopUp from 'components/PopUp/PopUp';
 import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
 import Rating from 'components/Rating/Rating';
 import Dropdown from 'components/Dropdown/Dropdown';
+import Counter from 'components/Counter/Counter';
+import Pills from 'components/Pills/Pills';
 import MapImg from 'assets/images/map.jpg';
 import style from './style';
 
@@ -49,6 +51,7 @@ const RestaurantDetails = (props: Props): React$Node => {
     moreDetails,
     address1,
     address2,
+    availableSlots,
   } = restaurantDetail;
 
   const toggleBookingModal = () => {
@@ -118,6 +121,7 @@ const RestaurantDetails = (props: Props): React$Node => {
         <PopUp
           isVisible={showBookings}
           title="Reservation"
+          height="55%"
           onClose={toggleBookingModal}>
           <View style={style.restaurantDetail}>
             <View>
@@ -131,6 +135,10 @@ const RestaurantDetails = (props: Props): React$Node => {
           </View>
 
           <Dropdown list={['Today', 'Tomorrow']} />
+
+          <Counter label="people" />
+
+          <Pills list={availableSlots} />
 
           <Button label="Make Reservation" onPress={toggleBookingModal} />
         </PopUp>

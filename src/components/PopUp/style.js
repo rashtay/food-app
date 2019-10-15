@@ -9,11 +9,13 @@ import EStylesheet from 'react-native-extended-stylesheet';
 
 const style = EStylesheet.create({
   container: {
+    width: '100%',
     margin: 0,
     justifyContent: 'flex-end',
   },
 
   wrapper: {
+    width: '100%',
     height: '70%',
     backgroundColor: '$color.color1',
   },

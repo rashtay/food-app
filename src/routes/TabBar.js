@@ -7,12 +7,24 @@
  */
 
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import EStylesheet from 'react-native-extended-stylesheet';
+import { View, TouchableOpacity, SafeAreaView } from 'react-native';
 import { connect } from 'react-redux';
 import { setTabBarHeight } from 'actions/tab-bar';
 
-const S = StyleSheet.create({
-  container: { flexDirection: 'row', height: 52, elevation: 2 },
+const S = EStylesheet.create({
+  container: {
+    flexDirection: 'row',
+    height: 52,
+    borderTopWidth: 1,
+    borderTopColor: '$color.color6',
+    shadowColor: '$color.color2',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+
   tabButton: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 });
 
