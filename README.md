@@ -21,6 +21,7 @@ A mock food app to practice React Native
 # Issue Fixes
 
 - App wasn't getting installed inn Android. The issue occurred dueto react-native-screen. It has been fixed https://github.com/kmagiera/react-native-screens/issues/166
+- Last minute UI fixes for android
 
 Please contact me if you have any queries. Thank you! :)
 +91 9096268273
