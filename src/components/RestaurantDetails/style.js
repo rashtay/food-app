@@ -87,6 +87,16 @@ const style = EStylesheet.create({
     borderRadius: '$gutter',
   },
 
+  payBtnWrapper: {
+    borderTopWidth: 1,
+    borderTopColor: '$color.color6',
+    shadowColor: '$color.color2',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+
   payBtn: {
     backgroundColor: '$color.color2',
   },

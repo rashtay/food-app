@@ -125,34 +125,38 @@ const RestaurantDetails = (props: Props): React$Node => {
           title="Reservation"
           height="55%"
           onClose={toggleBookingModal}>
-          <View style={style.restaurantDetail}>
-            <View>
-              <Text style={style.detailName}>{name}</Text>
+          <ScrollView>
+            <View style={style.restaurantDetail}>
+              <View>
+                <Text style={style.detailName}>{name}</Text>
 
-              <Text style={style.address}>{address1}</Text>
-              <Text style={style.address}>{address2}</Text>
+                <Text style={style.address}>{address1}</Text>
+                <Text style={style.address}>{address2}</Text>
+              </View>
+
+              <Image
+                source={{ uri: imgURL }}
+                defaultSource={PlaceholderImage}
+                style={style.detailImg}
+              />
             </View>
 
-            <Image
-              source={{ uri: imgURL }}
-              defaultSource={PlaceholderImage}
-              style={style.detailImg}
-            />
+            <Dropdown list={['Today', 'Tomorrow']} />
+
+            <Counter label="people" />
+
+            <Pills list={availableSlots} />
+          </ScrollView>
+
+          <View style={style.payBtnWrapper}>
+            <Button containerStyle={style.payBtn} onPress={toggleBookingModal}>
+              <Text style={style.label}>
+                <Icon name="logo-apple" style={style.appleIcon} />
+                &nbsp;
+                <Text>Pay</Text>
+              </Text>
+            </Button>
           </View>
-
-          <Dropdown list={['Today', 'Tomorrow']} />
-
-          <Counter label="people" />
-
-          <Pills list={availableSlots} />
-
-          <Button containerStyle={style.payBtn} onPress={toggleBookingModal}>
-            <Text style={style.label}>
-              <Icon name="logo-apple" style={style.appleIcon} />
-              &nbsp;
-              <Text>Pay</Text>
-            </Text>
-          </Button>
         </PopUp>
       </ScrollView>
     </View>
