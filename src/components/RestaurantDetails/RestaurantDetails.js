@@ -7,22 +7,31 @@
  */
 
 import React, { useState } from 'react';
-import { View, Text, StatusBar, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StatusBar,
+  ScrollView,
+  ImageBackground,
+} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import GalleryHeader from 'components/Header/GalleryHeader';
 import Button from 'components/Button/Button';
 import PopUp from 'components/PopUp/PopUp';
 import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
 import Rating from 'components/Rating/Rating';
+import MapImg from 'assets/images/map.jpg';
 import style from './style';
 
 type Props = {
   navigation: Object,
+  height: number,
 };
 
 // const ONE = 1;
 
 const RestaurantDetails = (props: Props): React$Node => {
-  const { navigation } = props;
+  const { navigation, height } = props;
   const [showBookings, toggleBookings] = useState(false);
   const { restaurantDetail, restaurantName } = navigation.state.params;
   const {
@@ -33,6 +42,8 @@ const RestaurantDetails = (props: Props): React$Node => {
     opensAt,
     closesAt,
     reviews,
+    description,
+    moreDetails,
   } = restaurantDetail;
 
   const toggleBookingModal = () => {
@@ -51,7 +62,7 @@ const RestaurantDetails = (props: Props): React$Node => {
         navigation={navigation}
       />
 
-      <ScrollView>
+      <ScrollView contentContainerStyle={style.container}>
         {/* Cuisine Meta Data */}
         <InfoBox>
           <InfoItem
@@ -73,8 +84,30 @@ const RestaurantDetails = (props: Props): React$Node => {
           />
         </InfoBox>
 
-        {/* See Ingredients Button */}
-        <Button label="See Ingredients" onPress={toggleBookingModal} />
+        <ImageBackground source={MapImg} style={style.imgBg}>
+          <LinearGradient
+            colors={[style.$gradient2, style.$gradient1]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 0.4 }}
+            style={[style.linearGradient, { paddingBottom: height }]}>
+            {/* See Ingredients Button */}
+            <Button label="Make Reservation" onPress={toggleBookingModal} />
+
+            {/* Description */}
+            <View style={style.section}>
+              <Text style={style.description}>{description}</Text>
+            </View>
+
+            {/* More Details */}
+            <View style={style.section}>
+              <Text style={style.detailTitle}>{moreDetails.title}</Text>
+
+              <Text style={style.description}>
+                {moreDetails.shortDescription}
+              </Text>
+            </View>
+          </LinearGradient>
+        </ImageBackground>
 
         {/* Modal */}
         <PopUp
