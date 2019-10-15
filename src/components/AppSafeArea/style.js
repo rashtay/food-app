@@ -8,7 +8,7 @@
 import EStylesheet from 'react-native-extended-stylesheet';
 
 const style = EStylesheet.create({
-  $statusBarColor: '$color.color1',
+  $statusBarColor: '$color.color3',
 
   topSafeArea: {
     backgroundColor: '$color.color3',
