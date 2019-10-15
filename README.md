@@ -21,7 +21,8 @@ A mock food app to practice React Native
 ### Issue Fixes
 
 - App wasn't getting installed inn Android. The issue occurred dueto react-native-screen. It has been fixed https://github.com/kmagiera/react-native-screens/issues/166
-- Last minute UI fixes for android
+- Android applies vertical padding to TextInput due to which style applied to TextInputfor ios and android becomes inconsistent. https://github.com/facebook/react-native/issues/6096
+- Add default status bar color
 
 Please contact me if you have any queries. Thank you! :)
 
