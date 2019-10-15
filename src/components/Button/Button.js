@@ -14,17 +14,24 @@ type Props = {
   children?: React$Node,
   label?: string,
   onPress: Function,
+  containerStyle?: Object,
 };
 
-const Button = ({ label, children, onPress }: Props): React$Node => (
+const Button = ({
+  label,
+  children,
+  containerStyle,
+  onPress,
+}: Props): React$Node => (
   <TouchableOpacity onPress={onPress}>
-    <View style={style.container}>
+    <View style={[style.container, containerStyle]}>
       {label ? <Text style={style.label}>{label}</Text> : children}
     </View>
   </TouchableOpacity>
 );
 
 Button.defaultProps = {
+  containerStyle: {},
   children: undefined,
   label: '',
 };

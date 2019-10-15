@@ -86,6 +86,21 @@ const style = EStylesheet.create({
     height: 88,
     borderRadius: '$gutter',
   },
+
+  payBtn: {
+    backgroundColor: '$color.color2',
+  },
+
+  label: {
+    color: '$color.color1',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 24,
+  },
+
+  appleIcon: {
+    fontSize: 24,
+  },
 });
 
 export default style;

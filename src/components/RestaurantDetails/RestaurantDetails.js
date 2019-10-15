@@ -16,6 +16,7 @@ import {
   Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Icon from 'react-native-vector-icons/Ionicons';
 import GalleryHeader from 'components/Header/GalleryHeader';
 import Button from 'components/Button/Button';
 import PopUp from 'components/PopUp/PopUp';
@@ -140,7 +141,13 @@ const RestaurantDetails = (props: Props): React$Node => {
 
           <Pills list={availableSlots} />
 
-          <Button label="Make Reservation" onPress={toggleBookingModal} />
+          <Button containerStyle={style.payBtn} onPress={toggleBookingModal}>
+            <Text style={style.label}>
+              <Icon name="logo-apple" style={style.appleIcon} />
+              &nbsp;
+              <Text>Pay</Text>
+            </Text>
+          </Button>
         </PopUp>
       </ScrollView>
     </View>
