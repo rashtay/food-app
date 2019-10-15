@@ -23,6 +23,9 @@ const style = EStylesheet.create({
     height: 30,
     borderRadius: 15,
     paddingHorizontal: '$gutter * 2',
+    paddingVertical: 0,
+    margin: 0,
+    borderWidth: 0,
     backgroundColor: '$color.color1',
   },
 
