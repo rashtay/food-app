@@ -19,7 +19,6 @@ const SLIDE_INDEX = 0;
 
 const Carousel = (props: Props) => {
   const { gallery } = props;
-  const carouselRef = useRef(null);
   const [pageNum, setPageNum] = useState(SLIDE_INDEX);
 
   const keyExtractor = (item: string) => item;
@@ -61,7 +60,6 @@ const Carousel = (props: Props) => {
         extraData={props}
         keyExtractor={keyExtractor}
         showsHorizontalScrollIndicator={false}
-        ref={carouselRef}
         onMomentumScrollEnd={onScrollEnd}
         pagingEnabled
         horizontal

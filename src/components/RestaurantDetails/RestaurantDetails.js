@@ -13,6 +13,7 @@ import {
   StatusBar,
   ScrollView,
   ImageBackground,
+  Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import GalleryHeader from 'components/Header/GalleryHeader';
@@ -20,6 +21,7 @@ import Button from 'components/Button/Button';
 import PopUp from 'components/PopUp/PopUp';
 import { InfoBox, InfoItem } from 'components/InfoBox/InfoBox';
 import Rating from 'components/Rating/Rating';
+import Dropdown from 'components/Dropdown/Dropdown';
 import MapImg from 'assets/images/map.jpg';
 import style from './style';
 
@@ -35,6 +37,7 @@ const RestaurantDetails = (props: Props): React$Node => {
   const [showBookings, toggleBookings] = useState(false);
   const { restaurantDetail, restaurantName } = navigation.state.params;
   const {
+    imgURL,
     gallery,
     euros,
     name,
@@ -44,6 +47,8 @@ const RestaurantDetails = (props: Props): React$Node => {
     reviews,
     description,
     moreDetails,
+    address1,
+    address2,
   } = restaurantDetail;
 
   const toggleBookingModal = () => {
@@ -112,11 +117,22 @@ const RestaurantDetails = (props: Props): React$Node => {
         {/* Modal */}
         <PopUp
           isVisible={showBookings}
-          title="Ingredients"
+          title="Reservation"
           onClose={toggleBookingModal}>
-          <View>
-            <Text>Hey</Text>
+          <View style={style.restaurantDetail}>
+            <View>
+              <Text style={style.detailName}>{name}</Text>
+
+              <Text style={style.address}>{address1}</Text>
+              <Text style={style.address}>{address2}</Text>
+            </View>
+
+            <Image source={{ uri: imgURL }} style={style.detailImg} />
           </View>
+
+          <Dropdown list={['Today', 'Tomorrow']} />
+
+          <Button label="Make Reservation" onPress={toggleBookingModal} />
         </PopUp>
       </ScrollView>
     </View>

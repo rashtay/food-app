@@ -41,7 +41,7 @@ module.exports = {
   ],
 
   rules: {
-    'no-magic-numbers': 2,
+    'no-magic-numbers': [2, { "ignore": [0, 1] }],
     'no-console': 2,
 
     // React
