@@ -21,6 +21,7 @@ import Header from 'components/Header/Header';
 import Rating from 'components/Rating/Rating';
 import routes from 'routes/routes';
 import MapImg from 'assets/images/map.jpg';
+import PlaceholderImage from 'assets/images/placeholder-dark.jpg';
 import style from './style';
 
 type Props = {
@@ -61,7 +62,11 @@ const RestaurantsScreen = (props: Props): React$Node => {
           </View>
         </View>
 
-        <Image source={{ uri: item.imgURL }} style={style.img} />
+        <Image
+          source={{ uri: item.imgURL }}
+          loadingIndicatorSource={PlaceholderImage}
+          style={style.img}
+        />
       </View>
     </TouchableOpacity>
   );

@@ -29,7 +29,6 @@ const ImageCard = ({
       <ImageBackground
         source={{ uri: imgURL }}
         style={style.imgBackground}
-        defaultSource={PlaceholderImage}
         loadingIndicatorSource={PlaceholderImage}>
         <View style={style.contentContainer}>{children}</View>
       </ImageBackground>

@@ -26,6 +26,7 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import Counter from 'components/Counter/Counter';
 import Pills from 'components/Pills/Pills';
 import MapImg from 'assets/images/map.jpg';
+import PlaceholderImage from 'assets/images/placeholder-dark.jpg';
 import style from './style';
 
 type Props = {
@@ -132,7 +133,11 @@ const RestaurantDetails = (props: Props): React$Node => {
               <Text style={style.address}>{address2}</Text>
             </View>
 
-            <Image source={{ uri: imgURL }} style={style.detailImg} />
+            <Image
+              source={{ uri: imgURL }}
+              loadingIndicatorSource={PlaceholderImage}
+              style={style.detailImg}
+            />
           </View>
 
           <Dropdown list={['Today', 'Tomorrow']} />

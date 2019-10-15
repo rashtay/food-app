@@ -18,6 +18,10 @@ A mock food app to practice React Native
 - I have taken the lliberty to use `react-native-vector-icons`for this project.
 - Since, I believe that this test was supposed test my UI building capabilities, I have built few components like search which aren't functional to save time so that I could wrap it up soon.
 
+# Issue Fixes
+
+- App wasn't getting installed inn Android. The issue occurred dueto react-native-screen. It has been fixed https://github.com/kmagiera/react-native-screens/issues/166
+
 Please contact me if you have any queries. Thank you! :)
 +91 9096268273
 shettyrahul8june@gmail.com

@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Image, View, FlatList } from 'react-native';
 import PlaceholderImage from 'assets/images/placeholder-dark.jpg';
 import style from './style';
@@ -27,7 +27,6 @@ const Carousel = (props: Props) => {
     <View style={style.imgContainer}>
       <Image
         source={{ uri: item }}
-        defaultSource={PlaceholderImage}
         loadingIndicatorSource={PlaceholderImage}
         style={style.img}
       />
