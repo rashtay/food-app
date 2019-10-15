@@ -135,7 +135,7 @@ const RestaurantDetails = (props: Props): React$Node => {
 
             <Image
               source={{ uri: imgURL }}
-              loadingIndicatorSource={PlaceholderImage}
+              defaultSource={PlaceholderImage}
               style={style.detailImg}
             />
           </View>

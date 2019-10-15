@@ -27,7 +27,7 @@ const Carousel = (props: Props) => {
     <View style={style.imgContainer}>
       <Image
         source={{ uri: item }}
-        loadingIndicatorSource={PlaceholderImage}
+        defaultSource={PlaceholderImage}
         style={style.img}
       />
 

@@ -64,7 +64,7 @@ const RestaurantsScreen = (props: Props): React$Node => {
 
         <Image
           source={{ uri: item.imgURL }}
-          loadingIndicatorSource={PlaceholderImage}
+          defaultSource={PlaceholderImage}
           style={style.img}
         />
       </View>
