@@ -21,7 +21,6 @@ module.exports = {
     'react-native',
     'flowtype',
     'json',
-    'filenames',
     'prettier',
   ],
 
@@ -41,7 +40,7 @@ module.exports = {
   ],
 
   rules: {
-    'no-magic-numbers': [2, { "ignore": [0, 1, -1] }],
+    'no-magic-numbers': [2, { ignore: [0, 1, -1] }],
     'no-console': 2,
 
     // React
@@ -82,10 +81,6 @@ module.exports = {
 
     // keep it simple
     complexity: 0,
-
-    // filename convention
-    'filenames/match-exported': [2, ['kebab', 'pascal'], null, true],
-    'filenames/no-index': 2,
   },
 
   settings: {

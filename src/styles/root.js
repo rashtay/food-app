@@ -8,4 +8,4 @@
  */
 
 export { deviceWidth, deviceHeight } from './dimensions';
-export { default as theme } from './theme';
+export { default as setTheme } from './theme';

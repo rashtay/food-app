@@ -10,6 +10,7 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 
 export const SEARCH = 'SEARCH';
 export const TAB_BAR = 'TAB_BAR';
+export const SET_THEME = 'SET_THEME';
 
 export const RECIPE_TYPES = {
   GET_RECIPE_CATEGORIES_REQUEST: 'GET_RECIPE_CATEGORIES_REQUEST',

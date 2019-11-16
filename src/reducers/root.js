@@ -13,12 +13,14 @@ import recipes from './recipes';
 import restaurants from './restaurants';
 import search from './search';
 import tabBar from './tab-bar';
+import theme from './theme';
 
 const appReducer = combineReducers({
   recipes,
   restaurants,
   tabBar,
   search,
+  theme,
 });
 
 const root = (state: Object, action: Object) => {
