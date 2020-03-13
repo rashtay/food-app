@@ -14,6 +14,7 @@ A mock food app to practice React Native
 - To install the app on android, run `npm run android`
 - To run the server, `npm start`
 - To reset the cache and run the server, `npm run reset-and-start`
+- Dummy server is created using https://github.com/rashtay/food-app-api
 
 ### Caveats
 
